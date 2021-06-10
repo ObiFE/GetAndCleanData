@@ -1,0 +1,64 @@
+---
+title: "CodeBook"
+author: "Obi F. Ezeibekwe"
+date: "6/9/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## CodeBook
+
+The script, `run_analysis.R`, performs the data collection and cleaning techniques and the 5 steps stipulated in the project.
+
+### 1. Collect data
+
++ Download the data, unzip it, construct the path to a file, and produce a character vector of the names of files.
+
+### 2. Assign each data to variables
+
+* `Y_test.txt` to `ActivityTest`
+* `Y_train.txt` to `ActivityTrain` 
+* `subject_train.txt` to `SubjectTrain`
+* `subject_test.txt` to `SubjectTest`
+* `X_test.txt` to `FeaturesTest`
+* `X_train.txt` to `FeaturesTrain`
+* `features.txt` to `FeaturesNames`
+* `activity_labels.txt` to `ActivityLabels`
+
+### 3. Merge all datasets
+
+* Merge *ActivityTest* and *ActivityTrain* using `rbind()` to form *Activity*
+* Merge *SubjectTest* and *SubjectTrain* using `rbind()` to form *Subject*
+* Merge *FeaturesTest* and *FeaturesTrain* using `rbind()` to form *Features*
+* Merge the three ftasets using `cbind()` to get *AllData*
+
+### 4. Extracts only the measurements on the mean and standard deviation for each measurement.
+
+* The dataset is named `SubAllData`
+
+### 5. Uses descriptive activity names to name the activities in the data set
+
+The variable, *activity* is recoded.
+
+### 6. Appropriately labels the data set with descriptive variable names
+
++ Characters starting with *t* changes to *Time*
+* Characters starting with *f* changes to *Frequency*
+* *Acc* changes to *Accelerometer*
+* *Gyro* changes to *Gyroscope*
+* *BodyBody* changes to *Body*
+* *Mag* changes to *Magnitude*
+* *tBody* changes to *TimeBody*
+* *-mean()* changes to *Mean*
+* *-std()* changes to *STD*
+* *-freq()* changes to *Frequency*
+* *angle* changes to *Angle*
+* *gravity* changes to *Gravity*
+
+### 7. From the data set in step 4, creates a second, independent tidy data set
+#with the average of each variable for each activity and each subject.
+
+Anew dataset, *TidyData*, is created.
